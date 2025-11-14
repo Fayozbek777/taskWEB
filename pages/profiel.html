@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../style/Style.css" />
+    <link rel="stylesheet" href="../style/profile.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="wrapper" id="prf-wrapper">
+      <nav class="navbar">
+        <div class="nav-box">
+          <div class="nav-left">
+            <span>
+              <img src="../Images/logo.png" alt="" class="nav-logo" />
+            </span>
+          </div>
+
+          <div class="nav-center">
+            <form class="nav-form">
+              <input
+                type="text"
+                placeholder="Search for course"
+                class="nav-input"
+              />
+              <span>
+                <img src="../Images/search.png" alt="" class="nav-search" />
+              </span>
+            </form>
+          </div>
+
+          <div class="nav-right">
+            <div class="nav-btn-box">
+              <span>
+                <img src="../Images/basket.png" alt="" class="nav-basket" />
+              </span>
+
+              <div class="user-dropdown">
+                <img
+                  src="../Images/user-icon.png"
+                  alt="User"
+                  class="nav-user"
+                />
+                <div class="dropdown-menu">
+                  <a href="#" class="dropdown-item">Jonathan Doe</a>
+                  <a href="#" class="dropdown-email">doe.jonathan@com</a>
+                  <div class="drop-line"></div>
+                  <a href="#" class="dropdown-item">My Account</a>
+                  <a href="#" class="dropdown-item">My Cart</a>
+                  <a href="#" class="dropdown-item">Wishlist</a>
+                  <div class="drop-line"></div>
+                  <a href="#" class="dropdown-item">Notifications</a>
+                  <a href="#" class="dropdown-item">Account Settings</a>
+                  <div class="drop-line"></div>
+
+                  <a href="./pages/login.html" class="dropdown-item logout"
+                    >Logout</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="burger-menu">
+            <div class="burger-icon">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+      <div class="container">
+        <h1 class="sec-title">My Account</h1>
+
+        <ul class="nav-tabs">
+          <li><a href="#" class="active">Profile</a></li>
+          <li><a href="#">Personalisation</a></li>
+          <li><a href="#">Account</a></li>
+          <li><a href="#">Payment Methods</a></li>
+          <li><a href="#">Notifications</a></li>
+          <li><a href="#">Privacy</a></li>
+        </ul>
+
+        <section class="profile-section">
+          <div class="avatar-wrapper">
+            <img
+              src="../Images/person-logo.png"
+              alt="User Avatar"
+              class="avatar"
+            />
+            <div class="edit-icon">
+              <svg viewBox="0 0 24 24">
+                <path
+                  d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04a.996.996 0 0 0 0-1.41l-2.34-2.34a.996.996 0 0 0-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"
+                />
+              </svg>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>First Name</label>
+            <input type="text" value="Jonathan" />
+          </div>
+
+          <div class="form-group">
+            <label>Last Name</label>
+            <input type="text" value="Doe" />
+          </div>
+
+          <div class="form-group">
+            <label>Headline</label>
+            <input type="text" placeholder="" />
+          </div>
+
+          <div class="form-group">
+            <label>Language</label>
+            <select>
+              <option>English</option>
+              <option>Spanish</option>
+              <option>French</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Link</label>
+            <input type="url" value="www.kitani.io" />
+          </div>
+
+          <button class="save-btn">Save</button>
+        </section>
+      </div>
+      <div class="footer" id="prf">
+        <div class="footer-glav-box">
+          <div class="footer-left">
+            <span>
+              <img src="../Images/footer-logo.png" alt="" class="footer-logo" />
+            </span>
+          </div>
+          <div class="footer-right">
+            <ul>
+              <div class="footer-list">
+                <li>
+                  <a href="" class="footer-item">Mobile Programming</a>
+                </li>
+                <li>
+                  <a href="" class="footer-item">Web Programming</a>
+                </li>
+                <li>
+                  <a href="" class="footer-item">Java Beginner</a>
+                </li>
+                <li>
+                  <a href="" class="footer-item">PHP Beginner</a>
+                </li>
+              </div>
+            </ul>
+          </div>
+          <div class="footer-right">
+            <ul>
+              <div class="footer-list">
+                <li>
+                  <a href="" class="footer-item">Adobe Illustrator</a>
+                </li>
+                <li>
+                  <a href="" class="footer-item">Adobe Photoshop</a>
+                </li>
+                <li>
+                  <a href="" class="footer-item">Design Logo</a>
+                </li>
+              </div>
+            </ul>
+          </div>
+          <div class="footer-right">
+            <ul>
+              <div class="footer-list">
+                <li>
+                  <a href="" class="footer-item">Writing Course</a>
+                </li>
+                <li>
+                  <a href="" class="footer-item">Photography</a>
+                </li>
+                <li>
+                  <a href="" class="footer-item">Video Making</a>
+                </li>
+              </div>
+            </ul>
+          </div>
+        </div>
+
+        <div class="footer-line"></div>
+
+        <div class="footer-box">
+          <h3 class="footer-text">
+            Copyright © MyCourse.io 2024. All Rights Reserved
+          </h3>
+
+          <div class="footer-soc-box">
+            <img src="../Images/twitter.png" alt="" class="footer-soc" />
+            <img src="../Images/instagram.png" alt="" class="footer-soc" />
+            <img src="../Images/facebook.png" alt="" class="footer-soc" />
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="../Main.js"></script>
+  </body>
+</html>

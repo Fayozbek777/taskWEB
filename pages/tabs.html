@@ -4,12 +4,416 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/x-icon" href="../Images/wbLogo.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="../Style.css" />
-    <link rel="stylesheet" href="../tabs.css" />
+    <link rel="stylesheet" href="../style/tabs.css" />
+    <link rel="stylesheet" href="../style/Style.css" />
     <title>ProendTask</title>
+    <style>
+      .layout {
+        display: flex;
+        max-width: 1500px;
+        margin: 40px auto;
+        gap: 32px;
+        padding: 0 16px;
+        font-family: "Inter", system-ui, -apple-system, sans-serif;
+      }
+
+      .layout-left {
+        width: 320px;
+        padding: 32px;
+        background: #fff;
+        border-radius: 20px;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+        position: sticky;
+        top: 20px;
+        height: fit-content;
+        flex-shrink: 0;
+      }
+
+      .layout-right {
+        flex: 1;
+        background: #fff;
+        border-radius: 20px;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+        padding: 24px;
+      }
+
+      /* === FILTERS === */
+      .filter-title {
+        font-size: 1.75rem;
+        font-weight: 700;
+        color: #111;
+        margin-bottom: 32px;
+        letter-spacing: -0.02em;
+      }
+
+      .filter-group {
+        margin-bottom: 40px;
+      }
+
+      .filter-name {
+        font-size: 1.125rem;
+        font-weight: 600;
+        color: #111;
+        margin-bottom: 16px;
+      }
+
+      .filter-row {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        padding: 10px 12px;
+        margin: 8px 0;
+        border-radius: 12px;
+        cursor: pointer;
+        transition: all 0.25s ease;
+        user-select: none;
+        font-size: 1rem;
+        color: #333;
+        font-weight: 500;
+      }
+
+      .filter-row:hover {
+        background: #f8f9fa;
+        transform: translateX(4px);
+      }
+
+      .filter-row input {
+        appearance: none;
+        width: 22px;
+        height: 22px;
+        border: 2.5px solid #cbd5e1;
+        border-radius: 6px;
+        cursor: pointer;
+        position: relative;
+        transition: all 0.25s ease;
+        flex-shrink: 0;
+      }
+
+      .filter-row input:checked {
+        background: #4b7bec;
+        border-color: #4b7bec;
+      }
+
+      .filter-row input:checked::after {
+        content: "✓";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: white;
+        font-weight: bold;
+        font-size: 14px;
+      }
+
+      .filter-row .stars {
+        width: 100px;
+        height: auto;
+        pointer-events: none;
+      }
+
+      .filter-row .filter-name,
+      .filter-row span {
+        font-weight: 500;
+        color: #333;
+      }
+
+      /* === COURSE GRID === */
+      .course-lay-box {
+        display: grid;
+        gap: 24px;
+        padding: 0;
+      }
+
+      @media (min-width: 1024px) {
+        .course-lay-box {
+          grid-template-columns: repeat(3, 1fr);
+        }
+      }
+
+      @media (min-width: 720px) and (max-width: 1023px) {
+        .course-lay-box {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      @media (max-width: 719px) {
+        .course-lay-box {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      /* === COURSE CARD === */
+      .crs-box {
+        background: #fff;
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        border: 1px solid #e2e8f0;
+        transition: all 0.3s ease;
+        cursor: pointer;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+      }
+
+      .crs-box:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 16px 32px rgba(0, 0, 0, 0.12);
+        border-color: #4b7bec;
+      }
+
+      .crs-img {
+        position: relative;
+        width: 100%;
+        height: 200px;
+        background-size: cover;
+        background-position: center;
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-start;
+        gap: 12px;
+        padding: 20px;
+        border-radius: 20px 20px 0 0;
+      }
+
+      .crs-img::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          to bottom,
+          rgba(0, 0, 0, 0.15),
+          transparent 40%
+        );
+        border-radius: 20px 20px 0 0;
+        pointer-events: none;
+      }
+
+      .crs-img1 {
+        background-image: url("../Images/crs-img1.png");
+      }
+      .crs-img2 {
+        background-image: url("../Images/crs-img2.png");
+      }
+      .crs-img3 {
+        background-image: url("../Images/crs-img3.png");
+      }
+      .crs-img4 {
+        background-image: url("../Images/crs-img4.png");
+      }
+      .crs-img5 {
+        background-image: url("../Images/crs-img5.png");
+      }
+      .crs-img6 {
+        background-image: url("../Images/crs-img6.png");
+      }
+      .crs-img7 {
+        background-image: url("../Images/crs-img7.png");
+      }
+      .crs-img8 {
+        background-image: url("../Images/crs-img8.png");
+      }
+
+      .crs-btn1,
+      .crs-btn2 {
+        padding: 6px 14px;
+        border-radius: 2rem;
+        font-size: 0.8125rem;
+        font-weight: 700;
+        color: white;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+        transition: all 0.25s ease;
+        backdrop-filter: blur(4px);
+        min-height: 32px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        white-space: nowrap;
+      }
+
+      .crs-btn1 {
+        background: linear-gradient(135deg, #3dcbb1, #2fb89f);
+      }
+
+      .crs-btn1:hover {
+        background: linear-gradient(135deg, #2fb89f, #26a68d);
+        transform: scale(1.05);
+      }
+
+      .crs-btn2 {
+        background: linear-gradient(135deg, #a04ae3, #8e3bc9);
+      }
+
+      .crs-btn2:hover {
+        background: linear-gradient(135deg, #8e3bc9, #7c2cb0);
+        transform: scale(1.05);
+      }
+
+      .crs-content {
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        gap: 12px;
+      }
+
+      .crs-title {
+        font-size: 1.125rem;
+        font-weight: 600;
+        color: #111;
+        line-height: 1.5;
+        margin: 0;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        min-height: 3.375rem;
+      }
+
+      .crs-person-box {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .person {
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 2px solid #e2e8f0;
+      }
+
+      .person-name {
+        font-size: 0.9375rem;
+        color: #64748b;
+        font-weight: 500;
+      }
+
+      .crs-star-box {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .crs-star-box .stars {
+        width: 96px;
+        height: auto;
+      }
+
+      .crs-text {
+        font-size: 0.875rem;
+        color: #64748b;
+        font-weight: 500;
+      }
+
+      .crs-price-box {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-top: auto;
+        padding-top: 16px;
+        border-top: 1px solid #e2e8f0;
+      }
+
+      .crs-price {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: #111;
+      }
+
+      .crs-price1 {
+        font-size: 1.125rem;
+        font-weight: 700;
+        color: #94a3b8;
+        text-decoration: line-through;
+      }
+
+      /* === RESPONSIVE === */
+      @media (max-width: 1240px) {
+        .layout {
+          gap: 24px;
+        }
+        .layout-left {
+          width: 280px;
+          padding: 24px;
+        }
+      }
+
+      @media (max-width: 1024px) {
+        .layout {
+          flex-direction: column;
+          gap: 24px;
+        }
+        .layout-left {
+          width: 100%;
+          position: static;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .crs-img {
+          height: 180px;
+          padding: 16px;
+        }
+        .crs-title {
+          font-size: 1.0625rem;
+        }
+        .crs-btn1,
+        .crs-btn2 {
+          font-size: 0.75rem;
+          padding: 5px 12px;
+          min-height: 28px;
+        }
+        .crs-price {
+          font-size: 1.375rem;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .layout {
+          padding: 0 12px;
+          margin: 20px auto;
+        }
+        .layout-left {
+          padding: 20px;
+        }
+        .filter-title {
+          font-size: 1.5rem;
+        }
+        .filter-row {
+          gap: 12px;
+          padding: 8px 10px;
+        }
+        .crs-img {
+          height: 160px;
+        }
+        .crs-star-box .stars {
+          width: 80px;
+        }
+        .crs-content {
+          padding: 16px;
+        }
+      }
+
+      /* Анимация */
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      .crs-box {
+        animation: fadeIn 0.4s ease forwards;
+      }
+    </style>
   </head>
   <body>
-    <div class="wrapper">
+    <div class="wrapper" id="tabs-wrapper">
       <nav class="navbar">
         <div class="nav-box">
           <div class="nav-left">
@@ -36,8 +440,6 @@
               <span>
                 <img src="../Images/basket.png" alt="" class="nav-basket" />
               </span>
-
-              <!-- 🧑 User Icon -->
               <div class="user-dropdown">
                 <img
                   src="../Images/user-icon.png"
@@ -48,7 +450,9 @@
                   <a href="#" class="dropdown-item">Jonathan Doe</a>
                   <a href="#" class="dropdown-email">doe.jonathan@com</a>
                   <div class="drop-line"></div>
-                  <a href="#" class="dropdown-item">My Courses</a>
+                  <a href="../pages/profiel.html" class="dropdown-item"
+                    >My Account</a
+                  >
                   <a href="#" class="dropdown-item">My Cart</a>
                   <a href="#" class="dropdown-item">Wishlist</a>
                   <div class="drop-line"></div>
@@ -56,7 +460,7 @@
                   <a href="#" class="dropdown-item">Account Settings</a>
                   <div class="drop-line"></div>
 
-                  <a href="../pages/login.html" class="dropdown-item logout"
+                  <a href="./pages/login.html" class="dropdown-item logout"
                     >Logout</a
                   >
                 </div>
@@ -73,17 +477,650 @@
           </div>
         </div>
       </nav>
+      <main class="layout">
+        <aside class="layout-left">
+          <h1 class="filter-title">Filters</h1>
 
-      <div class="layout">
-        <div class="layout-box">
-          <div class="layout-left">
-            <h1 class="glav-title">Filder</h1>
+          <section class="filter-group">
+            <h2 class="filter-name">Rating</h2>
+            <label class="filter-row">
+              <input type="checkbox" data-filter="rating" data-value="4.5" />
+              <img src="../Images/fivestars.png" class="stars" />
+              <span>4.5 & up (5.8K)</span>
+            </label>
+            <label class="filter-row">
+              <input type="checkbox" data-filter="rating" data-value="3.5" />
+              <img src="../Images/fourstars.png" class="stars" />
+              <span>3.5 & up (1.2K)</span>
+            </label>
+            <label class="filter-row">
+              <input type="checkbox" data-filter="rating" data-value="3.0" />
+              <img src="../Images/threestars.png" class="stars" />
+              <span>3.0 & up (867)</span>
+            </label>
+          </section>
 
-            <h1 class="name">Rating</h1>
+          <section class="filter-group">
+            <h2 class="filter-name">Video Duration</h2>
+            <label class="filter-row">
+              <input type="checkbox" data-filter="duration" data-value="0-2" />
+              <span>0-2 Hours (9.4K)</span>
+            </label>
+            <label class="filter-row">
+              <input type="checkbox" data-filter="duration" data-value="3-5" />
+              <span>3-5 Hours (4.1K)</span>
+            </label>
+            <label class="filter-row">
+              <input type="checkbox" data-filter="duration" data-value="6-12" />
+              <span>6-12 Hours (3.8K)</span>
+            </label>
+            <label class="filter-row">
+              <input type="checkbox" data-filter="duration" data-value="12+" />
+              <span>12+ Hours (1K)</span>
+            </label>
+          </section>
+
+          <section class="filter-group">
+            <h2 class="filter-name">Categories</h2>
+            <label class="filter-row">
+              <input
+                type="checkbox"
+                data-filter="category"
+                data-value="design"
+              />
+              <span>Design (3.2K)</span>
+            </label>
+            <label class="filter-row">
+              <input
+                type="checkbox"
+                data-filter="category"
+                data-value="programming"
+              />
+              <span>Programming (1.4K)</span>
+            </label>
+            <label class="filter-row">
+              <input
+                type="checkbox"
+                data-filter="category"
+                data-value="business"
+              />
+              <span>Business & Marketing (809)</span>
+            </label>
+            <label class="filter-row">
+              <input
+                type="checkbox"
+                data-filter="category"
+                data-value="finance"
+              />
+              <span>Finance (548)</span>
+            </label>
+            <label class="filter-row">
+              <input
+                type="checkbox"
+                data-filter="category"
+                data-value="music"
+              />
+              <span>Music & Film (1.9K)</span>
+            </label>
+            <label class="filter-row">
+              <input
+                type="checkbox"
+                data-filter="category"
+                data-value="photo"
+              />
+              <span>Photo & Video (2.3K)</span>
+            </label>
+            <label class="filter-row">
+              <input
+                type="checkbox"
+                data-filter="category"
+                data-value="writing"
+              />
+              <span>Writing (753)</span>
+            </label>
+          </section>
+
+          <section class="filter-group">
+            <h2 class="filter-name">Level</h2>
+            <label class="filter-row">
+              <input type="checkbox" data-filter="level" data-value="all" />
+              <span>All Levels</span>
+            </label>
+            <label class="filter-row">
+              <input
+                type="checkbox"
+                data-filter="level"
+                data-value="beginner"
+              />
+              <span>Beginner</span>
+            </label>
+            <label class="filter-row">
+              <input
+                type="checkbox"
+                data-filter="level"
+                data-value="elementary"
+              />
+              <span>Elementary</span>
+            </label>
+            <label class="filter-row">
+              <input
+                type="checkbox"
+                data-filter="level"
+                data-value="intermediate"
+              />
+              <span>Intermediate</span>
+            </label>
+            <label class="filter-row">
+              <input
+                type="checkbox"
+                data-filter="level"
+                data-value="advanced"
+              />
+              <span>Advanced</span>
+            </label>
+          </section>
+        </aside>
+
+        <section class="layout-right">
+          <div class="course-lay-box">
+            <div
+              class="crs-box"
+              data-rating="4.8"
+              data-duration="0-2"
+              data-category="design"
+              data-level="beginner"
+            >
+              <div class="crs-img crs-img1">
+                <div class="crs-btn1">Best Seller</div>
+                <div class="crs-btn2">20% OFF</div>
+              </div>
+              <div class="crs-content">
+                <h3 class="crs-title">Adobe Illustrator from Scratch Course</h3>
+                <div class="crs-person-box">
+                  <img
+                    src="../Images/crs-person.png"
+                    alt="Instructor"
+                    class="person"
+                  />
+                  <span class="person-name">Kitani Studio</span>
+                </div>
+                <div class="crs-star-box">
+                  <img
+                    src="../Images/crs-stars.png"
+                    alt="4.8 stars"
+                    class="stars"
+                  />
+                  <span class="crs-text">(1.2K)</span>
+                </div>
+                <div class="crs-price-box">
+                  <span class="crs-price">$24.92</span>
+                  <span class="crs-price1">$32.90</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- 2. Programming - Intermediate -->
+            <div
+              class="crs-box"
+              data-rating="4.6"
+              data-duration="3-5"
+              data-category="programming"
+              data-level="intermediate"
+            >
+              <div class="crs-img crs-img2">
+                <div class="crs-btn1">Best Seller</div>
+                <div class="crs-btn2">15% OFF</div>
+              </div>
+              <div class="crs-content">
+                <h3 class="crs-title">Advanced JavaScript & ES6 Mastery</h3>
+                <div class="crs-person-box">
+                  <img
+                    src="../Images/crs-person.png"
+                    alt="Instructor"
+                    class="person"
+                  />
+                  <span class="person-name">CodeMaster Pro</span>
+                </div>
+                <div class="crs-star-box">
+                  <img
+                    src="../Images/crs-stars.png"
+                    alt="4.6 stars"
+                    class="stars"
+                  />
+                  <span class="crs-text">(980)</span>
+                </div>
+                <div class="crs-price-box">
+                  <span class="crs-price">$39.99</span>
+                  <span class="crs-price1">$69.99</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- 3. Business - All Levels -->
+            <div
+              class="crs-box"
+              data-rating="4.9"
+              data-duration="6-12"
+              data-category="business"
+              data-level="all"
+            >
+              <div class="crs-img crs-img3">
+                <div class="crs-btn1">Top Rated</div>
+                <div class="crs-btn2">30% OFF</div>
+              </div>
+              <div class="crs-content">
+                <h3 class="crs-title">Digital Marketing Strategy 2025</h3>
+                <div class="crs-person-box">
+                  <img
+                    src="../Images/crs-person.png"
+                    alt="Instructor"
+                    class="person"
+                  />
+                  <span class="person-name">Sarah Marketing</span>
+                </div>
+                <div class="crs-star-box">
+                  <img
+                    src="../Images/crs-stars.png"
+                    alt="4.9 stars"
+                    class="stars"
+                  />
+                  <span class="crs-text">(2.1K)</span>
+                </div>
+                <div class="crs-price-box">
+                  <span class="crs-price">$49.90</span>
+                  <span class="crs-price1">$99.90</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- 4. Finance - Advanced -->
+            <div
+              class="crs-box"
+              data-rating="4.7"
+              data-duration="12+"
+              data-category="finance"
+              data-level="advanced"
+            >
+              <div class="crs-img crs-img4">
+                <div class="crs-btn1">Expert Level</div>
+              </div>
+              <div class="crs-content">
+                <h3 class="crs-title">Algorithmic Trading with Python</h3>
+                <div class="crs-person-box">
+                  <img
+                    src="../Images/crs-person.png"
+                    alt="Instructor"
+                    class="person"
+                  />
+                  <span class="person-name">Quant Finance Lab</span>
+                </div>
+                <div class="crs-star-box">
+                  <img
+                    src="../Images/crs-stars.png"
+                    alt="4.7 stars"
+                    class="stars"
+                  />
+                  <span class="crs-text">(548)</span>
+                </div>
+                <div class="crs-price-box">
+                  <span class="crs-price">$89.00</span>
+                  <span class="crs-price1">$179.00</span>
+                </div>
+              </div>
+            </div>
+            <div
+              class="crs-box"
+              data-rating="4.5"
+              data-duration="0-2"
+              data-category="music"
+              data-level="beginner"
+            >
+              <div class="crs-img crs-img8">
+                <div class="crs-btn1">New</div>
+                <div class="crs-btn2">25% OFF</div>
+              </div>
+              <div class="crs-content">
+                <h3 class="crs-title">Piano for Absolute Beginners</h3>
+                <div class="crs-person-box">
+                  <img
+                    src="../Images/crs-person.png"
+                    alt="Instructor"
+                    class="person"
+                  />
+                  <span class="person-name">Melody Keys</span>
+                </div>
+                <div class="crs-star-box">
+                  <img
+                    src="../Images/crs-stars.png"
+                    alt="4.5 stars"
+                    class="stars"
+                  />
+                  <span class="crs-text">(1.9K)</span>
+                </div>
+                <div class="crs-price-box">
+                  <span class="crs-price">$19.99</span>
+                  <span class="crs-price1">$39.99</span>
+                </div>
+              </div>
+            </div>
+            <div
+              class="crs-box"
+              data-rating="4.8"
+              data-duration="3-5"
+              data-category="photo"
+              data-level="intermediate"
+            >
+              <div class="crs-img crs-img6">
+                <div class="crs-btn1">Best Seller</div>
+              </div>
+              <div class="crs-content">
+                <h3 class="crs-title">Mastering Lightroom & Photoshop</h3>
+                <div class="crs-person-box">
+                  <img
+                    src="../Images/crs-person.png"
+                    alt="Instructor"
+                    class="person"
+                  />
+                  <span class="person-name">PhotoPro Studio</span>
+                </div>
+                <div class="crs-star-box">
+                  <img
+                    src="../Images/crs-stars.png"
+                    alt="4.8 stars"
+                    class="stars"
+                  />
+                  <span class="crs-text">(2.3K)</span>
+                </div>
+                <div class="crs-price-box">
+                  <span class="crs-price">$34.90</span>
+                  <span class="crs-price1">$69.90</span>
+                </div>
+              </div>
+            </div>
+            <div
+              class="crs-box"
+              data-rating="4.4"
+              data-duration="0-2"
+              data-category="writing"
+              data-level="elementary"
+            >
+              <div class="crs-img crs-img7">
+                <div class="crs-btn2">10% OFF</div>
+              </div>
+              <div class="crs-content">
+                <h3 class="crs-title">Creative Writing for Kids</h3>
+                <div class="crs-person-box">
+                  <img
+                    src="../Images/crs-person.png"
+                    alt="Instructor"
+                    class="person"
+                  />
+                  <span class="person-name">StoryCraft Academy</span>
+                </div>
+                <div class="crs-star-box">
+                  <img
+                    src="../Images/crs-stars.png"
+                    alt="4.4 stars"
+                    class="stars"
+                  />
+                  <span class="crs-text">(753)</span>
+                </div>
+                <div class="crs-price-box">
+                  <span class="crs-price">$14.99</span>
+                  <span class="crs-price1">$24.99</span>
+                </div>
+              </div>
+            </div>
+            <div
+              class="crs-box"
+              data-rating="4.9"
+              data-duration="12+"
+              data-category="programming"
+              data-level="advanced"
+            >
+              <div class="crs-img crs-img2">
+                <div class="crs-btn1">Pro Course</div>
+              </div>
+              <div class="crs-content">
+                <h3 class="crs-title">Full-Stack React & Node.js</h3>
+                <div class="crs-person-box">
+                  <img
+                    src="../Images/crs-person.png"
+                    alt="Instructor"
+                    class="person"
+                  />
+                  <span class="person-name">DevMaster</span>
+                </div>
+                <div class="crs-star-box">
+                  <img
+                    src="../Images/crs-stars.png"
+                    alt="4.9 stars"
+                    class="stars"
+                  />
+                  <span class="crs-text">(1.4K)</span>
+                </div>
+                <div class="crs-price-box">
+                  <span class="crs-price">$99.00</span>
+                  <span class="crs-price1">$199.00</span>
+                </div>
+              </div>
+            </div>
+            <div
+              class="crs-box"
+              data-rating="4.7"
+              data-duration="6-12"
+              data-category="design"
+              data-level="intermediate"
+            >
+              <div class="crs-img crs-img3">
+                <div class="crs-btn1">Best Seller</div>
+                <div class="crs-btn2">20% OFF</div>
+              </div>
+              <div class="crs-content">
+                <h3 class="crs-title">UI/UX Design with Figma</h3>
+                <div class="crs-person-box">
+                  <img
+                    src="../Images/crs-person.png"
+                    alt="Instructor"
+                    class="person"
+                  />
+                  <span class="person-name">DesignHub</span>
+                </div>
+                <div class="crs-star-box">
+                  <img
+                    src="../Images/crs-stars.png"
+                    alt="4.7 stars"
+                    class="stars"
+                  />
+                  <span class="crs-text">(3.2K)</span>
+                </div>
+                <div class="crs-price-box">
+                  <span class="crs-price">$59.90</span>
+                  <span class="crs-price1">$99.90</span>
+                </div>
+              </div>
+            </div>
+            <div
+              class="crs-box"
+              data-rating="4.3"
+              data-duration="0-2"
+              data-category="business"
+              data-level="beginner"
+            >
+              <div class="crs-img crs-img4">
+                <div class="crs-btn2">50% OFF</div>
+              </div>
+              <div class="crs-content">
+                <h3 class="crs-title">Startup Launch in 7 Days</h3>
+                <div class="crs-person-box">
+                  <img
+                    src="../Images/crs-person.png"
+                    alt="Instructor"
+                    class="person"
+                  />
+                  <span class="person-name">Entrepreneur Lab</span>
+                </div>
+                <div class="crs-star-box">
+                  <img
+                    src="../Images/crs-stars.png"
+                    alt="4.3 stars"
+                    class="stars"
+                  />
+                  <span class="crs-text">(809)</span>
+                </div>
+                <div class="crs-price-box">
+                  <span class="crs-price">$9.99</span>
+                  <span class="crs-price1">$29.99</span>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="crs-box"
+              data-rating="4.8"
+              data-duration="12+"
+              data-category="photo"
+              data-level="advanced"
+            >
+              <div class="crs-img crs-img5">
+                <div class="crs-btn1">Masterclass</div>
+              </div>
+              <div class="crs-content">
+                <h3 class="crs-title">Cinematic Video Editing</h3>
+                <div class="crs-person-box">
+                  <img
+                    src="../Images/crs-person.png"
+                    alt="Instructor"
+                    class="person"
+                  />
+                  <span class="person-name">FilmForge</span>
+                </div>
+                <div class="crs-star-box">
+                  <img
+                    src="../Images/crs-stars.png"
+                    alt="4.8 stars"
+                    class="stars"
+                  />
+                  <span class="crs-text">(1.5K)</span>
+                </div>
+                <div class="crs-price-box">
+                  <span class="crs-price">$129.00</span>
+                  <span class="crs-price1">$249.00</span>
+                </div>
+              </div>
+            </div>
+            <div
+              class="crs-box"
+              data-rating="4.6"
+              data-duration="3-5"
+              data-category="music"
+              data-level="intermediate"
+            >
+              <div class="crs-img crs-img6">
+                <div class="crs-btn1">Best Seller</div>
+                <div class="crs-btn2">30% OFF</div>
+              </div>
+              <div class="crs-content">
+                <h3 class="crs-title">Music Production in Ableton Live</h3>
+                <div class="crs-person-box">
+                  <img
+                    src="../Images/crs-person.png"
+                    alt="Instructor"
+                    class="person"
+                  />
+                  <span class="person-name">BeatLab Pro</span>
+                </div>
+                <div class="crs-star-box">
+                  <img
+                    src="../Images/crs-stars.png"
+                    alt="4.6 stars"
+                    class="stars"
+                  />
+                  <span class="crs-text">(1.1K)</span>
+                </div>
+                <div class="crs-price-box">
+                  <span class="crs-price">$44.90</span>
+                  <span class="crs-price1">$89.90</span>
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="layout-right"></div>
+        </section>
+      </main>
+
+      <div class="footer" id="tabs">
+        <div class="footer-glav-box">
+          <div class="footer-left">
+            <span>
+              <img src="../Images/footer-logo.png" alt="" class="footer-logo" />
+            </span>
+          </div>
+          <div class="footer-right">
+            <ul>
+              <div class="footer-list">
+                <li>
+                  <a href="" class="footer-item">Mobile Programming</a>
+                </li>
+                <li>
+                  <a href="" class="footer-item">Web Programming</a>
+                </li>
+                <li>
+                  <a href="" class="footer-item">Java Beginner</a>
+                </li>
+                <li>
+                  <a href="" class="footer-item">PHP Beginner</a>
+                </li>
+              </div>
+            </ul>
+          </div>
+          <div class="footer-right">
+            <ul>
+              <div class="footer-list">
+                <li>
+                  <a href="" class="footer-item">Adobe Illustrator</a>
+                </li>
+                <li>
+                  <a href="" class="footer-item">Adobe Photoshop</a>
+                </li>
+                <li>
+                  <a href="" class="footer-item">Design Logo</a>
+                </li>
+              </div>
+            </ul>
+          </div>
+          <div class="footer-right">
+            <ul>
+              <div class="footer-list">
+                <li>
+                  <a href="" class="footer-item">Writing Course</a>
+                </li>
+                <li>
+                  <a href="" class="footer-item">Photography</a>
+                </li>
+                <li>
+                  <a href="" class="footer-item">Video Making</a>
+                </li>
+              </div>
+            </ul>
+          </div>
+        </div>
+
+        <div class="footer-line"></div>
+
+        <div class="footer-box">
+          <h3 class="footer-text">
+            Copyright © MyCourse.io 2024. All Rights Reserved
+          </h3>
+
+          <div class="footer-soc-box">
+            <img src="../Images/twitter.png" alt="" class="footer-soc" />
+            <img src="../Images/instagram.png" alt="" class="footer-soc" />
+            <img src="../Images/facebook.png" alt="" class="footer-soc" />
+          </div>
         </div>
       </div>
     </div>
+
+    <script src="../Main.js"></script>
   </body>
 </html>
