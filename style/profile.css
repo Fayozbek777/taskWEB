@@ -1,0 +1,400 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+body {
+  background-color: #fff;
+  color: #333;
+  line-height: 1.6;
+}
+
+#prf-wrapper {
+  height: 0vh;
+}
+
+.container {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+.sec-title {
+  font-size: 24px;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.nav-tabs {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  border-bottom: 1px solid #e0e0e0;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+}
+
+.nav-tabs li {
+  margin: 0 15px;
+}
+
+.nav-tabs a {
+  text-decoration: none;
+  color: #666;
+  font-size: 15px;
+  padding: 10px 0;
+  position: relative;
+  transition: color 0.2s;
+}
+
+.nav-tabs a:hover {
+  color: #000;
+}
+
+.nav-tabs a.active {
+  color: #000;
+  font-weight: 500;
+}
+
+.nav-tabs a.active::after {
+  content: "";
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background-color: #00d4a9;
+  border-radius: 2px;
+}
+
+.profile-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.avatar-wrapper {
+  position: relative;
+  margin-bottom: 30px;
+}
+
+.avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.edit-icon {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background-color: #fff;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}
+
+.edit-icon svg {
+  width: 16px;
+  height: 16px;
+  fill: #666;
+}
+
+.form-group {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 6px;
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 12px 14px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #fafafa;
+  transition: border 0.2s;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: #00d4a9;
+  background-color: #fff;
+}
+
+.form-group select {
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23666'%3e%3cpath d='M7 10l5 5 5-5z'/%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 12px;
+}
+
+/* Save Button */
+.save-btn {
+  background-color: #00d4a9;
+  color: white;
+  border: none;
+  padding: 12px 32px;
+  font-size: 16px;
+  font-weight: 500;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  margin-top: 20px;
+}
+
+.save-btn:hover {
+  background-color: #00b893;
+}
+
+#prf {
+  position: relative;
+  top: 0;
+}
+/* 1024px */
+@media (max-width: 1024px) {
+  .container {
+    max-width: 90%;
+    margin: 30px auto;
+    padding: 0 15px;
+  }
+
+  .sec-title {
+    font-size: 22px;
+    margin-bottom: 25px;
+  }
+
+  .nav-tabs {
+    margin-bottom: 35px;
+  }
+
+  .nav-tabs li {
+    margin: 0 12px;
+  }
+
+  .nav-tabs a {
+    font-size: 14px;
+    padding: 8px 0;
+  }
+
+  .profile-section {
+    max-width: 450px;
+  }
+
+  .avatar {
+    width: 75px;
+    height: 75px;
+  }
+
+  .edit-icon {
+    width: 26px;
+    height: 26px;
+  }
+
+  .edit-icon svg {
+    width: 14px;
+    height: 14px;
+  }
+
+  .form-group input,
+  .form-group select {
+    padding: 11px 13px;
+    font-size: 15px;
+  }
+
+  .save-btn {
+    padding: 11px 28px;
+    font-size: 15px;
+  }
+}
+
+/* 720px */
+@media (max-width: 720px) {
+  .container {
+    max-width: 95%;
+    margin: 25px auto;
+    padding: 0 12px;
+  }
+
+  .sec-title {
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+
+  .nav-tabs {
+    margin-bottom: 30px;
+    justify-content: flex-start;
+    overflow-x: auto;
+    padding-bottom: 5px;
+  }
+
+  .nav-tabs li {
+    margin: 0 10px;
+    flex-shrink: 0;
+  }
+
+  .nav-tabs a {
+    font-size: 13px;
+    padding: 6px 0;
+    white-space: nowrap;
+  }
+
+  .profile-section {
+    max-width: 400px;
+  }
+
+  .avatar-wrapper {
+    margin-bottom: 25px;
+  }
+
+  .avatar {
+    width: 70px;
+    height: 70px;
+  }
+
+  .edit-icon {
+    width: 24px;
+    height: 24px;
+  }
+
+  .edit-icon svg {
+    width: 13px;
+    height: 13px;
+  }
+
+  .form-group {
+    margin-bottom: 18px;
+  }
+
+  .form-group label {
+    font-size: 13px;
+  }
+
+  .form-group input,
+  .form-group select {
+    padding: 10px 12px;
+    font-size: 14px;
+    border-radius: 6px;
+  }
+
+  .save-btn {
+    padding: 10px 24px;
+    font-size: 14px;
+    margin-top: 15px;
+    width: 100%;
+    max-width: 200px;
+  }
+}
+
+/* 480px */
+@media (max-width: 480px) {
+  .container {
+    margin: 20px auto;
+    padding: 0 10px;
+  }
+
+  .sec-title {
+    font-size: 18px;
+    margin-bottom: 15px;
+  }
+
+  .nav-tabs {
+    margin-bottom: 25px;
+    border-bottom: none;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+  }
+
+  .nav-tabs li {
+    margin: 0;
+    width: 100%;
+    text-align: center;
+  }
+
+  .nav-tabs a {
+    display: block;
+    padding: 8px 0;
+    font-size: 14px;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    margin: 2px 0;
+  }
+
+  .nav-tabs a.active::after {
+    display: none;
+  }
+
+  .nav-tabs a.active {
+    background-color: #00d4a9;
+    color: white;
+    border-color: #00d4a9;
+  }
+
+  .profile-section {
+    max-width: 100%;
+  }
+
+  .avatar-wrapper {
+    margin-bottom: 20px;
+  }
+
+  .avatar {
+    width: 65px;
+    height: 65px;
+  }
+
+  .edit-icon {
+    width: 22px;
+    height: 22px;
+  }
+
+  .edit-icon svg {
+    width: 12px;
+    height: 12px;
+  }
+
+  .form-group {
+    margin-bottom: 15px;
+  }
+
+  .form-group label {
+    font-size: 12px;
+    margin-bottom: 4px;
+  }
+
+  .form-group input,
+  .form-group select {
+    padding: 8px 10px;
+    font-size: 13px;
+    border-radius: 5px;
+  }
+
+  .save-btn {
+    padding: 9px 20px;
+    font-size: 13px;
+    margin-top: 10px;
+    max-width: 100%;
+  }
+}

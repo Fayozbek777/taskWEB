@@ -337,7 +337,7 @@ span img {
 .intro-bck {
   width: 100%;
   height: 1020px;
-  background-image: url("./Images/intro-bck.png");
+  background-image: url("../Images/intro-bck.png");
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -603,7 +603,7 @@ span img {
 }
 
 .crs-img1 {
-  background-image: url("./Images/crs-img1.png");
+  background-image: url("../Images/crs-img1.png");
   background-repeat: no-repeat;
   background-size: cover;
   width: 485px;
@@ -613,7 +613,7 @@ span img {
   border-radius: 23px;
 }
 .crs-img2 {
-  background-image: url("./Images/crs-img2.png");
+  background-image: url("../Images/crs-img2.png");
   background-repeat: no-repeat;
   background-size: cover;
   width: 485px;
@@ -623,7 +623,7 @@ span img {
   border-radius: 23px;
 }
 .crs-img3 {
-  background-image: url("./Images/crs-img3.png");
+  background-image: url("../Images/crs-img3.png");
   background-repeat: no-repeat;
   background-size: cover;
   width: 485px;
@@ -633,7 +633,7 @@ span img {
   border-radius: 23px;
 }
 .crs-img4 {
-  background-image: url("./Images/crs-img4.png");
+  background-image: url("../Images/crs-img4.png");
   background-repeat: no-repeat;
   background-size: cover;
   width: 485px;
@@ -643,7 +643,7 @@ span img {
   border-radius: 23px;
 }
 .crs-img5 {
-  background-image: url("./Images/trend-img3.png");
+  background-image: url("../Images/trend-img3.png");
   background-repeat: no-repeat;
   background-size: cover;
   width: 485px;
@@ -653,7 +653,7 @@ span img {
   border-radius: 23px;
 }
 .crs-img6 {
-  background-image: url("./Images/trend-img2.png");
+  background-image: url("../Images/trend-img2.png");
   background-repeat: no-repeat;
   background-size: cover;
   width: 485px;
@@ -804,7 +804,7 @@ span img {
 }
 
 .trend-img {
-  background-image: url("/Images/trend-img1.png");
+  background-image: url("../Images/trend-img1.png");
   background-repeat: no-repeat;
   background-size: cover;
   width: 690px;

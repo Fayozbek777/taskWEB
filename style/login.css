@@ -25,7 +25,7 @@ body {
 }
 
 .left-panel {
-  background-image: url("./Images/login-img.png");
+  background-image: url("../Images/login-img.png");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
