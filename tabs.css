@@ -1,0 +1,25 @@
+.layout {
+  width: 2381px;
+  height: 900px;
+  border: 1px solid red;
+  margin: auto;
+}
+
+.layout-left {
+  width: 800px;
+  position: relative;
+  right: 245px;
+  height: 900px;
+  border: 1px solid green;
+}
+.layout-right {
+  width: 1620px;
+  height: 900px;
+  border: 1px solid black;
+}
+
+.layout-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
