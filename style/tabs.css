@@ -599,4 +599,10 @@
 #tabs {
   position: relative;
   top: 0;
+  width: 100%;
+}
+
+#tabs-box {
+  width: 2381px;
+  margin: auto;
 }
